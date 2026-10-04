@@ -1,0 +1,155 @@
+/* Fill a viewport when content fits; longer sections use the document scroll. */
+#main > section {
+  height: auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-height: none;
+  overflow: visible;
+  margin-block: 0;
+}
+#main > .section-padding,
+#main > .work-section {
+  padding-block: clamp(88px, 10dvh, 120px);
+}
+#main > .automation-feature,
+#main > .faq,
+#main > .contact { align-items:center; align-content:center; }
+#main > .technology { display:flex; flex-direction:column; justify-content:center; }
+#main > .services,
+#main > .studio {
+  display:flex;
+  flex-direction:column;
+  justify-content:safe center;
+  align-items:stretch;
+}
+#main > .services > *,
+#main > .studio > *,
+#main > .technology > * { flex-shrink:0; }
+#main > .hero {
+  overflow:visible;
+  justify-content:safe center;
+  padding-block:clamp(88px,10dvh,120px);
+}
+#main > .hero .hero-layout {
+  flex:none;
+  min-height:0;
+  padding:0 6%;
+  align-content:center;
+}
+#main > .hero .hero-proof { margin-top:24px; }
+#main > .brand-opening { height:100dvh; overflow:clip; }
+.opening-viewport { position:relative; height:100%; padding-block:88px; }
+.world-transition { height:auto; min-height:100dvh; overflow:visible; }
+
+/* Remove the previous sticky title and 18vh offset so both columns share a center. */
+#main > .introduction {
+  grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
+  gap:clamp(24px,5vw,80px);
+  align-items:center;
+  align-content:safe center;
+}
+.introduction > div:first-child { position:static; }
+.introduction-body { padding-top:0; }
+.introduction h2 { font-size:clamp(36px,min(5.2vw,7.5dvh),76px); margin-top:20px; }
+.introduction-body > p { font-size:clamp(14px,1.15vw,17px); line-height:1.65; }
+.intro-pillars { gap:20px; margin-top:24px; }
+
+/* Keep the heading and all three project cards within the same desktop screen. */
+#main > .work-section { display:flex; flex-direction:column; justify-content:safe center; gap:24px; }
+.work-heading.section-padding { padding-block:0; flex:none; }
+.work-heading .heading-row { gap:24px; margin-top:16px; align-items:center; }
+.work-heading .heading-row h2 { font-size:clamp(32px,min(4.1vw,6.2dvh),64px); line-height:1.08; }
+.work-section .project-track { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; perspective:none; flex:none; }
+.work-section .project-panel,
+.work-section .project-panel:first-child,
+.work-section .project-panel:nth-child(3) { display:block; grid-column:auto; margin:0; padding:0; border:0; }
+.work-section .project-panel .project-visual { aspect-ratio:1.5; max-height:34dvh; }
+.work-section .project-panel .project-info { padding-top:14px; padding-bottom:12px; align-items:center; flex-wrap:nowrap; }
+.work-section .project-panel .project-info h3 { font-size:clamp(22px,2.2vw,34px); line-height:1.1; margin-top:6px; }
+.work-section .project-panel .project-info > span { display:none; }
+.work-section .project-panel .project-summary { margin-top:10px; padding-top:0; border:0; font-size:12px; line-height:1.5; }
+.work-section .circle-link { flex-shrink:0; }
+
+@media(max-width:767px) {
+  #main > .section-padding,
+  #main > .work-section { padding-block:88px; }
+  #main > .introduction { grid-template-columns:1fr; align-content:center; gap:24px; }
+  .introduction h2 { font-size:clamp(32px,8vw,48px); }
+  .intro-pillars { grid-template-columns:1fr; gap:16px; }
+  #main > .work-section { justify-content:center; }
+  .work-heading .heading-row { display:block; }
+  .work-heading-right { margin-top:16px; }
+  .work-section .project-track { grid-template-columns:1fr; gap:24px; }
+  .work-section .project-panel .project-visual { max-height:none; aspect-ratio:1.5; }
+  .work-heading .heading-row h2 { font-size:clamp(32px,8vw,48px); }
+}
+
+/* Compact project details and scalable illustrations. */
+/* Shared white-and-gold section heading system. */
+#main { --section-title-size:clamp(24px,3.3vw,48px); --title-gold:linear-gradient(100deg,#fff0bc,#bd9448 55%,#eed593); }
+#main .section-title {
+  font-size:var(--section-title-size);
+  font-family:var(--heading);
+  font-weight:500;
+  font-style:normal;
+  color:#f4eddc;
+  line-height:1.1;
+  letter-spacing:-.065em;
+  text-transform:none;
+  text-align:left;
+  margin:0;
+  padding:0;
+  width:100%;
+  max-width:620px;
+}
+#main .section-title > span {
+  display:block;
+  font:inherit;
+  letter-spacing:inherit;
+  margin:0;
+  padding:0;
+}
+#main .section-title > .section-title-first { color:#f4eddc; background:none; -webkit-text-fill-color:#f4eddc; }
+#main .section-title > .section-title-second {
+  color:#e2c786;
+  background:var(--title-gold);
+  background-clip:text;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+#main .introduction > div:first-child > .section-kicker,
+#main .faq > div:first-child > .section-kicker,
+#main .contact-copy > .section-kicker {
+  margin-bottom:24px;
+}
+@media(max-width:1024px) {
+  #main { --section-title-size:32px; }
+}
+@media(max-width:767px) {
+  #main { --section-title-size:clamp(22px,6.6vw,32px); }
+}
+
+.illustrated-project { filter:none; background:#191a15; }
+.illustrated-project svg { display:block; width:100%; height:100%; position:absolute; inset:0; transition:transform .4s ease; }
+.project-open:hover .illustrated-project svg { transform:scale(1.025); }
+.modal.project-dialog { width:min(620px, calc(100% - 32px)); max-height:88dvh; }
+.project-dialog .modal-inner { padding:38px 26px 26px; }
+.project-detail-header { display:grid; grid-template-columns:minmax(0,1fr) 176px; gap:20px; align-items:center; }
+.project-dialog .project-modal h2 { font-size:22px; line-height:1.2; letter-spacing:-.4px; margin:9px 0; }
+.project-dialog .project-detail-intro { font-size:12px; line-height:1.6; margin:0; }
+.project-dialog .project-modal .project-visual { width:176px; height:118px; aspect-ratio:auto; max-height:none; border-radius:6px; }
+.project-dialog .project-modal .section-kicker { font-size:10px; }
+.project-dialog .project-modal dl { gap:16px 22px; margin:20px 0 0; }
+.project-dialog .project-modal dl > div { padding-top:10px; }
+.project-dialog .project-modal dt { font-size:10px; }
+.project-dialog .project-modal dd { font-size:12px; line-height:1.6; margin:7px 0 0; }
+@media(max-width:600px) {
+  .project-dialog .modal-inner { padding:42px 20px 24px; }
+  .project-detail-header { grid-template-columns:minmax(0,1fr); gap:14px; }
+  .project-dialog .project-modal h2 { font-size:20px; }
+  .project-dialog .project-modal .project-visual { width:150px; height:100px; }
+  .project-dialog .project-modal dl { grid-template-columns:1fr; gap:13px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .illustrated-project svg { transition:none; }
+}

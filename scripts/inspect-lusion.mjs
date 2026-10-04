@@ -1,0 +1,13 @@
+import { chromium } from '@playwright/test'
+const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true })
+const page = await browser.newPage({ viewport: { width: 1440, height: 960 }, ignoreHTTPSErrors: true })
+await page.goto('https://lusion.co/about/', { waitUntil: 'domcontentloaded', timeout: 60000 })
+await page.waitForTimeout(5000)
+await page.screenshot({ path: 'artifacts/reference-about-entry.png' })
+await page.mouse.wheel(0, 1600)
+await page.waitForTimeout(2000)
+await page.screenshot({ path: 'artifacts/reference-about-middle.png' })
+await page.mouse.wheel(0, 1800)
+await page.waitForTimeout(2000)
+await page.screenshot({ path: 'artifacts/reference-about-lower.png' })
+await browser.close()
