@@ -41,8 +41,3 @@ npm run build
 
 The application is optimized for modern web environments and production deployment.
 
-## CreationWorks Studio LLC
-
-Digital experiences. Technology. Innovation.
-
-© 2026 CreationWorks Studio LLC. All rights reserved.
